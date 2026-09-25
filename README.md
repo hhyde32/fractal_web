@@ -4,21 +4,34 @@ This project extends my original Java fractal generator by adding a web-based in
 
 The original project generated fractal images locally using Java. This extended version keeps the original fractal-generation code and adds a Spring Boot web application that allows users to change parameters through a browser.
 
-## Features
+## 📸 Demo
 
-- Generates fractals using the original Java implementation
-- Provides a web interface for changing fractal parameters
-- Allows users to change:
-  - Image size
-  - Fractal width
-  - Real origin
-  - Imaginary origin
-  - Colouring mode
-- Returns generated fractals as PNG images
-- Preserves the original command-line image-generation functionality
+![Fractal Image](src/main/resources/images/demo_photo.avif)  
 
-## Technologies Used
+## 📦 Installation
 
+Clone the repo:
+
+```bash
+git clone https://github.com/hhyde32/fractal_web.git 
+```
+
+## 🛠 Usage
+
+Move into the project directory and run the application with Maven:
+
+```bash
+cd fractal_web/
+mvn spring-boot:run
+```
+
+Once the application has started, open the following address in a browser:
+
+```bash
+http://localhost:8000
+```
+
+## 🧰 Tech Stack
 - Java
 - Spring Boot
 - Spring Web
@@ -26,23 +39,3 @@ The original project generated fractal images locally using Java. This extended 
 - HTML
 - JavaScript
 - Java AWT `BufferedImage`
-
-## Project Structure
-
-```text
-src/
-└── main/
-    ├── java/
-    │   └── com/example/fractal/
-    │       ├── FractalWebApplication.java
-    │       ├── FractalController.java
-    │       ├── Main.java
-    │       ├── Complex.java
-    │       ├── Polynomial.java
-    │       ├── Secant.java
-    │       └── Other fractal classes
-    │
-    └── resources/
-        └── static/
-            └── index.html
-'''
