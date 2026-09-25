@@ -1,6 +1,6 @@
 # Fractal Generator Web Application
 
-This project extends my original Java fractal generator by adding a web-based interface.
+This project extends my [Java fractal generator](https://github.com/hhyde32/fractal_generator) by adding a web-based interface.
 
 The original project generated fractal images locally using Java. This extended version keeps the original fractal-generation code and adds a Spring Boot web application that allows users to change parameters through a browser.
 
