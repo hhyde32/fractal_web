@@ -1,53 +1,48 @@
-# Polynomial Fractals
-This project generates fractal images from 
-polynomials, using the [Secant algorithm](https://en.wikipedia.org/wiki/Secant_method) to find roots.
+# Fractal Generator Web Application
 
-The main interest of this project is to study the behavior of root convergence in the complex plane.
-Each point is assigned a color according to what root of a polynomial it converges to when
-using the Secant method. It may be intuitive to think that each point converges to the root that is 
-closest in distance to it but it is not the case. As you can see it forms these beautiful patterns that 
-are infinitely detailed.
+This project extends my original Java fractal generator by adding a web-based interface.
 
-## Visualization
-The fractals below were generated from the polynomial $f(z) = z^3 - 1$ centered at $-2.0 + 2.0i$
-with a width of $4$. The dark fractal uses the number of iterations to alter the brightness of the 
-pixels; the brighter a pixel is the fewer iterations it took to arrive at a root.
+The original project generated fractal images locally using Java. This extended version keeps the original fractal-generation code and adds a Spring Boot web application that allows users to change parameters through a browser.
 
-#### Light fractal
-![Light Newton fractal](images/light_fractal.png)
+## Features
 
-#### Dark fractal
-![Dark Newton fractal](images/dark_fractal.png)
+- Generates fractals using the original Java implementation
+- Provides a web interface for changing fractal parameters
+- Allows users to change:
+  - Image size
+  - Fractal width
+  - Real origin
+  - Imaginary origin
+  - Colouring mode
+- Returns generated fractals as PNG images
+- Preserves the original command-line image-generation functionality
 
-## Requirements
+## Technologies Used
 
-- Java 17 or later
+- Java
+- Spring Boot
+- Spring Web
+- Maven
+- HTML
+- JavaScript
+- Java AWT `BufferedImage`
 
-## Output
+## Project Structure
 
-Generated images are saved in the `images` directory.
-
-## Project structure
-
-- `Complex.java` — complex-number operations
-- `Polynomial.java` — polynomial representation and evaluation
-- `Secant.java` — root-finding algorithm
-- `Main.java` — image generation and program entry point
-## Usage
-
-Clone the repository:
-
-```bash
-git clone https://github.com/hhyde32/newton_fractal.git
-cd matvar
-pip install -r requirements.txt
-```
-
-Run the following commands to compile and save the generated fractals to the images directory.
-This may take around a minute depending on your system.
-
-```bash
-javac Main.java
-java Main
-```
-You can edit the bottom of the Main.java file to generate different fractals.
+```text
+src/
+└── main/
+    ├── java/
+    │   └── com/example/fractal/
+    │       ├── FractalWebApplication.java
+    │       ├── FractalController.java
+    │       ├── Main.java
+    │       ├── Complex.java
+    │       ├── Polynomial.java
+    │       ├── Secant.java
+    │       └── Other fractal classes
+    │
+    └── resources/
+        └── static/
+            └── index.html
+'''
