@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fractal Generator</title>
+</head>
+<body>
+    <h1>Fractal Generator</h1>
+
+    <label>
+        Width:
+        <input id="width" type="number" value="4" step="0.1">
+    </label>
+
+    <br><br>
+
+    <label>
+        Origin real:
+        <input id="originReal" type="number" value="-2" step="0.1">
+    </label>
+
+    <br><br>
+
+    <label>
+        Origin imaginary:
+        <input id="originImag" type="number" value="2" step="0.1">
+    </label>
+
+    <br><br>
+
+    <label>
+        Image size:
+        <input id="size" type="number" value="600" min="100" max="1200">
+    </label>
+
+    <br><br>
+
+    <label>
+        Colour iterations:
+        <input id="colourIterations" type="checkbox">
+    </label>
+
+    <br><br>
+
+    <button onclick="generateFractal()">Generate</button>
+
+    <p id="status"></p>
+    <img id="fractal" alt="Generated fractal">
+
+    <script>
+        async function generateFractal() {
+            const parameters = new URLSearchParams({
+                size: document.getElementById("size").value,
+                width: document.getElementById("width").value,
+                originReal: document.getElementById("originReal").value,
+                originImag: document.getElementById("originImag").value,
+                colourIterations:
+                    document.getElementById("colourIterations").checked
+            });
+
+            document.getElementById("status").textContent =
+                "Generating...";
+
+            const response = await fetch(
+                "/api/fractal?" + parameters.toString()
+            );
+
+            if (!response.ok) {
+                document.getElementById("status").textContent =
+                    "Generation failed";
+                return;
+            }
+
+            const imageBlob = await response.blob();
+
+            document.getElementById("fractal").src =
+                URL.createObjectURL(imageBlob);
+
+            document.getElementById("status").textContent = "Done";
+        }
+    </script>
+</body>
+</html>
